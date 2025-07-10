@@ -1,0 +1,13 @@
+<div class="dashboard">
+  <app-dashboard-header [isConnected]="isConnected()"></app-dashboard-header>
+  
+  <app-stream-controls 
+    [isConnected]="isConnected()"
+    [selectedClassification]="selectedClassification()"
+    (toggleStream)="toggleStream()"
+    (clearTargets)="clearTargets()"
+    (filterChange)="onFilterChange($event)">
+  </app-stream-controls>
+  
+  <app-target-list [targets]="filteredTargets()"></app-target-list>
+</div> 

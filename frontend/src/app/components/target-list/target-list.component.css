@@ -1,0 +1,152 @@
+.targets-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.targets-header {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.targets-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.scroll-to-latest-btn {
+  padding: 8px 16px;
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.scroll-to-latest-btn:hover:not(:disabled) {
+  background-color: #138496;
+  transform: translateY(-1px);
+}
+
+.scroll-to-latest-btn:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.targets-list {
+  max-height: 600px;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.target-item {
+  padding: 15px 20px;
+  border-bottom: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.target-item:hover {
+  background-color: #f8f9fa;
+}
+
+.target-item.latest {
+  background-color: #fff3cd;
+  border-left: 4px solid #ffc107;
+}
+
+.target-item.hostile {
+  border-left: 4px solid #dc3545;
+}
+
+.target-item.friendly {
+  border-left: 4px solid #28a745;
+}
+
+.target-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.target-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.target-id {
+  font-size: 0.9rem;
+  color: #6c757d;
+  font-family: monospace;
+}
+
+.target-details {
+  display: flex;
+  gap: 20px;
+}
+
+.target-info {
+  flex: 1;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.label {
+  font-weight: 500;
+  color: #555;
+  min-width: 100px;
+}
+
+.value {
+  color: #333;
+}
+
+.classification {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.classification.hostile {
+  color: #dc3545;
+}
+
+.classification.friendly {
+  color: #28a745;
+}
+
+.heading-icon {
+  display: inline-block;
+  margin-right: 5px;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .target-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .info-row {
+    flex-direction: column;
+    gap: 2px;
+  }
+} 

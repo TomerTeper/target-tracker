@@ -1,0 +1,23 @@
+<div class="controls">
+  <div class="filter-controls">
+    <label for="classification-filter">Filter by Classification:</label>
+    <select 
+      id="classification-filter" 
+      [value]="selectedClassification()"
+      (change)="onFilterChange($event)">
+      <option value="">All Targets</option>
+      <option value="hostile">Hostile</option>
+      <option value="friendly">Friendly</option>
+    </select>
+  </div>
+
+  <div class="stream-controls">
+    <button 
+      (click)="onToggleStream()" 
+      [class.active]="isConnected()"
+      class="stream-btn">
+      {{ isConnected() ? 'Stop Stream' : 'Start Stream' }}
+    </button>
+    <button (click)="onClearTargets()" class="clear-btn">Clear All</button>
+  </div>
+</div> 

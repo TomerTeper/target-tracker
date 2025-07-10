@@ -1,0 +1,7 @@
+<header class="dashboard-header">
+  <h1>🎯 Mini Target Tracker</h1>
+  <div class="connection-status">
+    <span class="status-indicator" [class.connected]="isConnected()"></span>
+    {{ isConnected() ? 'Connected' : 'Disconnected' }}
+  </div>
+</header> 

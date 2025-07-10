@@ -1,0 +1,48 @@
+<div class="targets-container">
+  <div class="targets-header">
+    <h2>Real-time Targets ({{ targets().length }})</h2>
+    <button 
+      (click)="scrollToLatestTarget()" 
+      class="scroll-to-latest-btn"
+      [disabled]="targets().length === 0">
+      Jump to Latest
+    </button>
+  </div>
+  
+  <div class="targets-list" #targetsList>
+    <div 
+      *ngFor="let target of targets(); trackBy: trackByTargetId" 
+      class="target-item"
+      [class.latest]="target === targets()[0]"
+      [class.hostile]="target.classification === 'hostile'"
+      [class.friendly]="target.classification === 'friendly'">
+      
+      <div class="target-header">
+        <span class="target-name">{{ target.name }}</span>
+        <span class="target-id">#{{ target.id }}</span>
+      </div>
+      
+      <div class="target-details">
+        <div class="target-info">
+          <div class="info-row">
+            <span class="label">Classification:</span>
+            <span class="value classification" [class]="target.classification">
+              {{ target.classification }}
+            </span>
+          </div>
+          <div class="info-row">
+            <span class="label">Heading:</span>
+            <span class="value">
+              <span class="heading-icon" [style.transform]="'rotate(' + target.heading + 'deg)'">➤</span>
+              {{ target.heading }}°
+            </span>
+          </div>
+          <div class="info-row">
+            <span class="label">Timestamp:</span>
+            <span class="value">{{ target.timestamp | date:'HH:mm:ss' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
