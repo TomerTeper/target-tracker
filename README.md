@@ -63,6 +63,8 @@ frontend/src/app/
 
 3. Start the FastAPI server:
    ```bash
+   python start_server.py 
+   or
    uvicorn app.main:app --reload
    ```
 
