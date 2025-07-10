@@ -20,14 +20,11 @@ import { TargetListComponent } from './components/target-list/target-list.compon
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-  // Signals
   selectedClassification = signal<'' | 'hostile' | 'friendly'>('');
 
-  // Computed signals
   isConnected = this.targetService.isConnected;
   targets = this.targetService.targets;
   
-  // Computed filtered targets
   filteredTargets = computed(() => {
     const targets = this.targets();
     const classification = this.selectedClassification();

@@ -1,4 +1,4 @@
-import { Injectable, signal, computed, effect } from '@angular/core';
+import { Injectable, signal, computed, effect, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Target } from '../models/target.model';
@@ -7,17 +7,14 @@ import { Target } from '../models/target.model';
   providedIn: 'root'
 })
 export class TargetService {
-  // Signals
   private targetsSignal = signal<Target[]>([]);
   private isConnectedSignal = signal<boolean>(false);
   private wsConnection?: WebSocket;
 
-  // Computed signals
   public targets = this.targetsSignal.asReadonly();
   public isConnected = this.isConnectedSignal.asReadonly();
   public targetCount = computed(() => this.targets().length);
 
-  // Filtered targets computed signal
   public getFilteredTargets(classification?: 'hostile' | 'friendly') {
     return computed(() => {
       const targets = this.targets();
@@ -29,11 +26,9 @@ export class TargetService {
   private apiUrl = 'http://localhost:8000';
   private wsUrl = 'ws://localhost:8000/ws';
 
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
-  // Connect to real WebSocket stream
   startWebSocketStream(): void {
-    // Stop any existing connection first
     this.stopWebSocketStream();
     
     try {
@@ -79,7 +74,6 @@ export class TargetService {
     this.isConnectedSignal.set(false);
   }
 
-  // REST API methods
   getTargets(): Observable<{targets: Target[], count: number}> {
     return this.http.get<{targets: Target[], count: number}>(`${this.apiUrl}/targets`);
   }
@@ -88,9 +82,6 @@ export class TargetService {
     return this.http.post(`${this.apiUrl}/targets`, { targets });
   }
 
-
-
-  // Clear all targets
   clearTargets(): void {
     this.targetsSignal.set([]);
   }

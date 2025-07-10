@@ -22,7 +22,6 @@ export class TargetListComponent {
     if (this.targetsList && this.targetsList.nativeElement) {
       const container = this.targetsList.nativeElement;
       
-      // Smooth scroll to the top (latest target)
       container.scrollTo({
         top: 0,
         behavior: 'smooth'

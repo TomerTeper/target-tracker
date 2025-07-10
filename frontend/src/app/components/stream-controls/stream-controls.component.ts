@@ -11,11 +11,9 @@ import { FormsModule } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StreamControlsComponent {
-  // Input signals
   isConnected = input<boolean>(false);
   selectedClassification = input<'' | 'hostile' | 'friendly'>('');
   
-  // Output signals
   toggleStream = output<void>();
   clearTargets = output<void>();
   filterChange = output<'hostile' | 'friendly' | ''>();
